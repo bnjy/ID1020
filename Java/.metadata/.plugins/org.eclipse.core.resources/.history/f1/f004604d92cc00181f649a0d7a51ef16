@@ -1,0 +1,15 @@
+package directed_3;
+
+import edu.princeton.cs.algs4.Queue;
+
+public class DepthFirstOrder {
+	private boolean[] marked;
+	private Queue<Integer> pre;
+	private Queue<Integer> post;
+	private Queue<Integer> reversePost;
+	
+	public DepthFirstOrder(Digraph graph) {
+		
+	}
+
+}

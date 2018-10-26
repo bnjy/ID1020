@@ -1,0 +1,103 @@
+package undirected_2;
+
+import edu.princeton.cs.algs4.*;
+import java.util.*;
+
+public class Graph {
+	
+	private final int V;
+	
+	//number of edges
+	private int E;
+	private Bag<Integer>[] adj;
+	
+    /**
+     * Initializes an empty graph with param V vertices and 0 edges.
+     * @param V the number of vertices
+     */
+	public Graph(int V) {
+		this.V = V;
+		this.E = 0;
+		adj = (Bag<Integer>[]) new Bag[V];
+		for (int v = 0; v < V; v++) {
+			adj[v] = new Bag<Integer>();
+		}
+	}
+	
+	
+	public Graph(In in) {
+		this(in.readInt());
+		int E = in.readInt();
+		for(int i = 0; i < E; i++) {
+			//add an edge
+			int v = in.readInt();
+			int w = in.readInt();
+			addEdge(v, w);
+		}
+	}
+	
+	/**
+	 * Returns the number of vertices in this graph.
+	 * @return the number of vertices in this graph.
+	 */
+	public int V() {
+		return V;
+	}
+	
+	/**
+	 * Returns the number of edges in this graph.
+	 * @return the number of edges in this graph.
+	 */
+	public int E() {
+		return E;
+	}
+	
+	/**
+	 * Adds the undirected edge v-w to this graph.
+	 * @param v one vertex in the edge.
+	 * @param w the other vertex in the edge.
+	 */
+	public void addEdge(int v, int w) {
+		adj[v].add(w);
+		adj[w].add(v);
+		E++;
+	}
+	
+	/**
+	 * Returns the vertices adjacent to vertex param v.
+	 * @param v the vertex.
+	 * @return the vertices adjacent to vertex param v.
+	 */
+    public Iterable<Integer> adj(int v) {
+        return adj[v];
+    }
+
+    /**
+     * Returns the degree of the given vertex v.
+     * @param v the vertex.
+     * @return the degree of the given vertex v.
+     */
+    public int degree(int v) {
+    	return adj[v].size();
+    }
+
+    /**
+     * String representation of this graph.
+     */
+	public String toString() {
+		String s = V + " vertices, " + E + " edges\n";
+		for (int v = 0; v < V; v++) {
+			s += v + ": ";
+			for(int w : this.adj(v))
+				s += w + " "; 
+			s += "\n";
+		}
+		return s;
+	}
+
+	public static void main(String[] args) {
+		In in = new In(args[0]);
+		Graph G = new Graph(in);
+		StdOut.println(G);
+	}
+}

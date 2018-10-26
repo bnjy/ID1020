@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Roth/Documents/KTH/ID1020/C/lab3/main.c
+stdio.h
+-
+stdlib.h
+-
+ctype.h
+-
+

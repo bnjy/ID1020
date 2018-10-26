@@ -1,0 +1,49 @@
+package problem2;
+
+import java.io.*;
+import java.util.*;
+import edu.princeton.cs.algs4.*;
+
+public class FreqCounter {
+	private FreqCounter() { }
+	
+	public static void main(String[] args) {
+		 
+
+		 
+	     BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(1000);
+		 
+     }
+	public static void readWords() {
+		
+		 int counter = 0;
+		 int minlen = 1;
+		
+		 while (!StdIn.isEmpty() && counter < 1000) {
+			 String word = StdIn.readString().toLowerCase();
+			 if (word.length() < minlen)
+				 continue;
+			 
+			 if(st.contains(word)) {
+				 st.put(word, st.get(word) + 1);
+			 } 
+			 else {
+				 st.put(word, 1);;
+			 }
+			 counter++;
+		 }
+		 
+		 String max = "";
+		 st.put(max, 0);
+		 for(String word : st.keys()) {
+			 if(st.get(word) > st.get(max))
+				 max = word;
+		 }
+		 StdOut.println(max + " " + st.get(max));
+		
+	} 
+
+}
+
+
+

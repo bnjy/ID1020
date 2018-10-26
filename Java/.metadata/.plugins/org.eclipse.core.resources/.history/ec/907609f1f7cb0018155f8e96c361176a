@@ -1,0 +1,56 @@
+package directed_1;
+
+import edu.princeton.cs.algs4.*;
+import undirected_1.SymbolGraph;
+
+public class Digraph {
+	private final int V;
+	private int E;
+	private Bag<Integer>[] adj;
+	
+	public Digraph(int V) {
+		this.V = V;
+		this.E = E;
+		adj = (Bag<Integer>[]) new Bag[V];
+		for(int v = 0; v < V; v++)
+			adj[v] = new Bag<Integer>();
+	}
+	
+	public int V() {
+		return V;
+	}
+	
+    public int E() {
+    	return E;
+    }
+    
+    public void addEdge(int v, int w)
+    {
+    	adj[v].add(w);
+    	E++;
+    }	
+    
+    public Iterable<Integer> adj(int v) {
+    	return adj[v];
+    }
+    
+    public Digraph reverse() {
+    	Digraph R = new Digraph(V);
+    	for (int v = 0; v < V; v++)
+    		for (int w : adj(v))
+    			R.addEdge(w, v);
+    	return R;
+    }
+    
+    public String toString(SymbolGraph sg) {
+		String s = V + " vertices, " + E + " edges\n";
+		for (int v = 0; v < V; v++) {
+			s += sg.name(v) + ": ";
+			for(int w : this.adj(v))
+				s += sg.name(w) + " "; 
+			s += "\n";
+		}
+		return s;
+    }
+    
+}

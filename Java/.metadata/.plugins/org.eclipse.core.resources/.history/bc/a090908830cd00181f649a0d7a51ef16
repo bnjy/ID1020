@@ -1,0 +1,61 @@
+package undirected_1;
+
+import edu.princeton.cs.algs4.*;
+
+public class DepthFirstSearch {
+	
+	private boolean[] marked;		//is the vertex marked? (has dfs been called for this vertex?)
+	private int[] edgeTo;			//last vertex known path to this vertex
+	private final int source;		//source
+	
+	/**
+	 * Computes the vertices in graph that are connected to the given source vertex.
+	 * @param graph the graph
+	 * @param source the source vertex
+	 */
+	public DepthFirstSearch(Graph graph, int source) {
+		marked = new boolean[graph.V()];
+		edgeTo = new int[graph.V()];
+		this.source = source;
+		dfs(graph, source);
+	}
+	
+	/**
+	 * Depth first search from the vertex
+	 * @param graph the graph
+	 * @param vertex the given vertex
+	 */
+	private void dfs(Graph graph, int vertex) {
+		marked[vertex] = true;
+		for (int w : graph.adj(vertex))
+			if (!marked[w]) {
+				edgeTo[w] = vertex;
+				dfs(graph, w);
+			}
+	}
+	
+	/**
+	 * Is there a path between the source vertex and the parameter vertex?
+	 * @param vertex the vertex
+	 * @return {@code true} if there is a path, {@code false} if not.
+	 */
+	public boolean hasPathTo(int vertex) {
+		return marked[vertex];
+	}
+	
+	
+	/**
+	 * Returns a path between the source vertex {@code source} and the given vertex 
+	 * {@code vertex}. Returns null 
+	 * @param vertex
+	 * @return
+	 */
+	public Iterable<Integer> pathTo(int vertex){
+		if (!hasPathTo(vertex)) return null;
+		Stack<Integer> path = new Stack<Integer>();
+		for (int x = vertex; x != source; x = edgeTo[x])
+			path.push(x);
+		path.push(source);
+		return path;
+	}
+}

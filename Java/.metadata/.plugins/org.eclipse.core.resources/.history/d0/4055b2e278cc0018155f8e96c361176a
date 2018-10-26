@@ -1,0 +1,15 @@
+package directed_2;
+
+import edu.princeton.cs.algs4.Stack;
+
+public class DirectedCycle {
+	private boolean[] marked;
+	private int[] edgeTo;
+	private Stack<Integer> cycle;
+	private int count;
+	
+	public DirectedCycle(Digraph graph) {
+		
+	}
+
+}

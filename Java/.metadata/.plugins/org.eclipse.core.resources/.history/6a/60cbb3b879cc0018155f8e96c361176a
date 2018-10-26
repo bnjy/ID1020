@@ -1,0 +1,17 @@
+package directed_2;
+
+import edu.princeton.cs.algs4.Stack;
+
+public class DirectedCycle {
+	private boolean[] marked;
+	private int[] edgeTo;
+	private Stack<Integer> cycle;
+	private boolean[] onStack;
+	
+	public DirectedCycle(Digraph graph) {
+		onStack = new boolean[graph.numberOfVertices()];
+		edgeTo = new int[graph.numberOfVertices()];
+		marked = new boolean[graph.numberOfVertices()];
+	}
+
+}

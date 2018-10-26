@@ -1,0 +1,16 @@
+package directed_1;
+
+import edu.princeton.cs.algs4.*;
+
+public class Digraph {
+	private final int V;
+	private int E;
+	private Bag<Integer>[] adj;
+	
+	public Diagraph(int V) {
+		this.V = V;
+		this.E = E;
+		adj = (Bag<Integer>[]) new Bag[V];
+		
+	}
+}

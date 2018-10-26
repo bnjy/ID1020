@@ -1,0 +1,13 @@
+package directed_2;
+
+public class DFS_connected {
+	
+	private boolean[] marked;
+	private int[] id;
+	private int count;
+	
+	public DFS_connected(Digraph graph) {
+		
+	}
+
+}

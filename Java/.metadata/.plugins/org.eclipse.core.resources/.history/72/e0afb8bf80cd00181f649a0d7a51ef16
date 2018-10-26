@@ -1,0 +1,74 @@
+package undirected_1;
+
+import edu.princeton.cs.algs4.*;
+import java.util.*;
+
+public class Graph {
+	
+	private final int numberOfVertices;		//number of vertices
+	private int numberOfEdges;				//number of edges
+	private Bag<Integer>[] adj;
+	
+    /**
+     * Initializes an empty graph with param V vertices and 0 edges.
+     * @param numberOfVertices the number of vertices
+     */
+	public Graph(int numberOfVertices) {
+		this.numberOfVertices = numberOfVertices;
+		this.numberOfEdges = 0;
+		adj = (Bag<Integer>[]) new Bag[numberOfVertices];
+		for (int i = 0; i < numberOfVertices; i++) {
+			adj[i] = new Bag<Integer>();
+		}
+	}
+	
+	/**
+	 * Returns the number of vertices in this graph.
+	 * @return the number of vertices in this graph.
+	 */
+	public int numberOfVertices() {
+		return numberOfVertices;
+	}
+	
+	/**
+	 * Returns the number of edges in this graph.
+	 * @return the number of edges in this graph.
+	 */
+	public int numberOfEdges() {
+		return numberOfEdges;
+	}
+	
+	/**
+	 * Adds the undirected edge v-w to this graph.
+	 * @param vertex one vertex in the edge.
+	 * @param otherVertex the other vertex in the edge.
+	 */
+	public void addEdge(int vertex, int otherVertex) {
+		adj[vertex].add(otherVertex);
+		adj[otherVertex].add(vertex);
+		numberOfEdges++;
+	}
+	
+	/**
+	 * Returns the vertices adjacent to vertex param v.
+	 * @param vertex the vertex.
+	 * @return the bag connected to the index.
+	 */
+    public Iterable<Integer> adj(int vertex) {
+        return adj[vertex];
+    }
+
+    /**
+     * String representation of this graph.
+     */
+	public String toString(SymbolGraph_u1 sg) {
+		String s = numberOfVertices + " vertices, " + numberOfEdges + " edges\n";
+		for (int i = 0; i < numberOfVertices; i++) {
+			s += sg.name(i) + ": ";
+			for(int w : this.adj(i))
+				s += sg.name(w) + " "; 
+			s += "\n";
+		}
+		return s;
+	}
+}

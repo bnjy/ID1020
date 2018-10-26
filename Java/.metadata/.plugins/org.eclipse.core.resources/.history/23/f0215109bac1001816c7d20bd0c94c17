@@ -1,0 +1,165 @@
+package problem2;
+
+import edu.princeton.cs.algs4.*;
+import java.util.*;
+
+public class BinarySearchTree<Key extends Comparable<Key>, Value> {
+	private Node root;
+	
+	private class Node {
+	private Key key;
+	private Value val;
+	private Node left;
+	private Node right;
+	private int N;
+	
+		public Node(Key key, Value val, int N) {
+			this.key = key;
+			this.val = val;
+			this.N = N;
+		}
+	}
+	
+	public int size() {
+		return size(root);
+	}
+	
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+	
+	private int size(Node node) {
+		if(node == null)
+			return 0;
+		else
+			return node.N;
+	}
+	
+	public Value get(Key key) {
+		return get(root, key);
+	}
+	private Value get(Node node, Key key) {
+		if(node == null)
+			return null;
+		int cmp = key.compareTo(node.key);
+		if(cmp < 0)
+			return get(node.left, key);
+		else if (cmp > 0)
+			return get (node.right, key);
+		else
+			return node.val;
+	}
+	
+	public void put (Key key, Value val) {
+		root = put(root, key, val);
+	}
+	
+	private Node put(Node node, Key key, Value val) {
+		if (node == null)
+			return 	new Node(key, val, 1);
+		int cmp = key.compareTo(node.key);
+		if (cmp < 0)
+			node.left = put(node.left, key, val);
+		else if (cmp > 0)
+			node.right = put(node.right, key, val);
+		else
+			node.val = val;
+		node.N = size(node.left) + size(node.right) + 1;
+		return node;
+	}
+	
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
+    
+    public Iterable<Key> keys() {
+        if (isEmpty()) 
+        	return new Queue<Key>();
+        return keys(min(), max());
+    }
+    
+    public Key min() {
+        return min(root).key;
+    } 
+
+    private Node min(Node x) { 
+        if (x.left == null) return x; 
+        else                return min(x.left); 
+    } 
+
+    /**
+     * Returns the largest key in the symbol table.
+     *
+     * @return the largest key in the symbol table
+     * @throws NoSuchElementException if the symbol table is empty
+     */
+    public Key max() {
+        return max(root).key;
+    } 
+
+    private Node max(Node x) {
+        if (x.right == null) return x; 
+        else                 return max(x.right); 
+    }
+    
+    public int rank(Key key) {
+        return rank(key, root);
+    } 
+
+    // Number of keys in the subtree less than key.
+    private int rank(Key key, Node x) {
+        if (x == null) return 0; 
+        int cmp = key.compareTo(x.key); 
+        if      (cmp < 0) return rank(key, x.left); 
+        else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right); 
+        else              return size(x.left); 
+    } 
+
+    /**
+     * Returns all keys in the symbol table in the given range,
+     * as an {@code Iterable}.
+     *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
+     * @return all keys in the symbol table between {@code lo} 
+     *         (inclusive) and {@code hi} (inclusive)
+     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
+     *         is {@code null}
+     */
+    public Iterable<Key> keys(Key lo, Key hi) {
+    	
+        Queue<Key> queue = new Queue<Key>();
+        keys(root, queue, lo, hi);
+        return queue;
+    } 
+
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) { 
+        if (x == null) return; 
+        int cmplo = lo.compareTo(x.key); 
+        int cmphi = hi.compareTo(x.key); 
+        if (cmplo < 0) keys(x.left, queue, lo, hi); 
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key); 
+        if (cmphi > 0) keys(x.right, queue, lo, hi); 
+    } 
+
+    /**
+     * Returns the number of keys in the symbol table in the given range.
+     *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
+     * @return the number of keys in the symbol table between {@code lo} 
+     *         (inclusive) and {@code hi} (inclusive)
+     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
+     *         is {@code null}
+     */
+    public int size(Key lo, Key hi) {
+        if (lo.compareTo(hi) > 0)
+        	return 0;
+        if (contains(hi))
+        	return rank(hi) - rank(lo) + 1;
+        else
+        	return rank(hi) - rank(lo);
+    }
+
+
+}

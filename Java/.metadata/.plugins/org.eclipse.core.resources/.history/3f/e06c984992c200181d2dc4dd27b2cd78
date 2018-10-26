@@ -1,0 +1,65 @@
+package problem3;
+
+import java.util.*;
+
+public class FreqCounter {
+	private FreqCounter() { }
+	
+	public static void main(String[] args) {
+		 
+		int counter = 0;
+		int minlen = 1; 	//word is not shorter than the given length minlen
+		Scanner scanner = new Scanner(System.in);
+		 
+	    BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(1000);
+		 
+	    // Build symbol table and count frequencies.
+		while (counter < 1000) {
+			String word = scanner.next().toLowerCase();
+			if (word.length() < minlen)
+				continue;
+			
+			if(st.contains(word)) {
+				st.put(word, st.get(word) + 1);
+			} 
+			else {
+				st.put(word, 1);
+			}
+			counter++;
+		}
+		
+		//int n = scanner.nextInt();
+		//int m = scanner.nextInt();
+		
+		String[] interval = new String[5];
+		
+		
+			String maxa = "";
+			st.put(maxa, 0);
+			String temp = null;
+			for(int i = 0; i < 5; i++) {
+			for(String word : st.keys()) {
+				if(st.get(word) > st.get(maxa))
+					maxa = word;
+				String[i] = maxa;
+					if(!(st.contains(maxa))) {
+						System.out.println("Tjenare");
+					}
+			}
+			System.out.println();
+			System.out.println("Word: '" + maxa + "', frequency: " + st.get(maxa));
+			}
+		}
+/*		
+		//get key with highest frequency
+		String max = "";
+		st.put(max, 0);
+		for(String word : st.keys()) {
+			if(st.get(word) > st.get(max))
+				max = word;
+		}
+		System.out.println();
+		System.out.println("Word: '" + max + "', frequency: " + st.get(max));
+*/		
+}
+

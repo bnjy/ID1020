@@ -1,0 +1,11 @@
+package directed_3;
+
+public class Topological {
+	
+	private Iterable<Integer> order;
+	
+	public Topological(Digraph graph) {
+		DirectedCycle cyclefinder = new DirectedCycle(graph);
+	}
+
+}

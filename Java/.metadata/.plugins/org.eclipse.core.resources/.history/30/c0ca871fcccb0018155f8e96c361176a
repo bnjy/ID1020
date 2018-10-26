@@ -1,0 +1,13 @@
+package undirected_3;
+
+import edu.princeton.cs.algs4.*;
+
+public class EdgeWeightedGraph {
+	private final int V;
+	private int E;
+	private Bag<Edge>[] adj;
+	
+	public EdgeWeightedGraph(int v) {
+		
+	}
+}

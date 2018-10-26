@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdIn"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+    <fullyQualifiedTypeName name="com.sun.tools.classfile.StackMap_attribute.stack_map_frame"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.In"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.ST"/>
+    <fullyQualifiedTypeName name="java.util.TreeMap"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.Bag"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdOut"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.Stack"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.DepthFirstOrder"/>
+    <fullyQualifiedTypeName name="edu.princeton.cs.algs4.Queue"/>
+</qualifiedTypeNameHistroy>

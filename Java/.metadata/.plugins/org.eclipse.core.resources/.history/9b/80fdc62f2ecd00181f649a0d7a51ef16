@@ -1,0 +1,44 @@
+package undirected_1;
+
+import edu.princeton.cs.algs4.*;
+
+public class DepthFirstSearch {
+	
+	private boolean[] marked;		//is the vertex marked? (has dfs been called for this vertex?)
+	private int[] edgeTo;			//last vertex known path to this vertex
+	private final int source;		//source
+	
+	/**
+	 * Computes the
+	 * @param graph
+	 * @param source
+	 */
+	public DepthFirstSearch(Graph graph, int source) {
+		marked = new boolean[graph.V()];
+		edgeTo = new int[graph.V()];
+		this.source = source;
+		dfs(graph, source);
+	}
+	
+	private void dfs(Graph G, int v) {
+		marked[v] = true;
+		for (int w : G.adj(v))
+			if (!marked[w]) {
+				edgeTo[w] = v;
+				dfs(G, w);
+			}
+	}
+	
+	public boolean hasPathTo(int v) {
+		return marked[v];
+	}
+	
+	public Iterable<Integer> pathTo(int v){
+		if (!hasPathTo(v)) return null;
+		Stack<Integer> path = new Stack<Integer>();
+		for (int x = v; x != source; x = edgeTo[x])
+			path.push(x);
+		path.push(source);
+		return path;
+	}
+}

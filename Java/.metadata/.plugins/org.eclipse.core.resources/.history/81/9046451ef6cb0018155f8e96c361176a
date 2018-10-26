@@ -1,0 +1,54 @@
+package directed_1;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import edu.princeton.cs.algs4.*;
+
+public class DirectedDFS {
+	
+	private boolean[] marked;
+	
+	public DirectedDFS(Digraph graph, int s) {
+		marked = new boolean[graph.V()];
+		
+		dfs(graph, s);
+    }
+	
+	public DirectedDFS(Digraph graph, Iterable<Integer> sources) {
+		marked = new boolean[graph.V()];
+		for (int s : sources)
+			if(!marked[s])
+				dfs(graph, s);
+	}
+	
+	private void dfs(Digraph graph, int v) {
+		marked[v] = true;
+		for (int w : graph.adj(v))
+			if (!marked[w])
+				dfs(graph, w);
+	}
+	
+	public boolean marked(int v) {  
+		return marked[v];
+	}
+	
+	public static void main(String[] args) throws MalformedURLException {
+    	URL url = new URL("https://introcs.cs.princeton.edu/java/data/contiguous-usa.dat");
+    	String delimiter = " ";
+    	SymbolGraph sg = new SymbolGraph(url, delimiter);
+    	
+    	System.out.println(sg.toString());
+		
+/*		
+		Digraph graph = new Digraph();
+		Bag<Integer> sources = new Bag<Integer>();
+		for (int i = 1; i < args.length; i++)
+			sources.add(Integer.parseInt(args[i]));
+		DirectedDFS reachable = new DirectedDFS(graph, sources);
+		for (int v = 0; v < graph.V(); v++)
+			if (reachable.marked(v)) StdOut.print(v + " ");
+		StdOut.println();
+*/
+	}
+}

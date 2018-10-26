@@ -1,0 +1,53 @@
+package directed_3;
+
+import edu.princeton.cs.algs4.Stack;
+
+public class DirectedCycle {
+	private boolean[] marked;
+	private int[] edgeTo;
+	private Stack<Integer> cycle;
+	private boolean[] onStack;
+	
+    /**
+     * Determines whether the graph has a directed cycle and, if so,
+     * finds such a cycle.
+     * @param graph the graph
+     */
+	public DirectedCycle(Digraph graph) {
+		onStack = new boolean[graph.numberOfVertices()];
+		edgeTo = new int[graph.numberOfVertices()];
+		marked = new boolean[graph.numberOfVertices()];
+		for(int i = 0; i < graph.numberOfVertices(); i++) {
+			if(!marked[i])
+				dfs(graph, i);
+		}
+	}
+	
+	private void dfs(Digraph graph, int v) {
+		onStack[v] = true;
+		marked[v] = true;
+		for(int w : graph.adj(v))
+			if(this.hasCycle())
+				return;
+			else if(!marked[w]) {
+				edgeTo[w] = v;
+				dfs(graph, w);
+			} else if(onStack[w]) {
+				cycle = new Stack<Integer>();
+				for(int x = v; x != w; x = edgeTo[x])
+					cycle.push(x);
+				cycle.push(w);
+				cycle.push(v);
+			}
+		onStack[v] = false;
+	}
+	
+	public boolean hasCycle() {
+		return cycle != null;
+	}
+	
+	public Iterable<Integer> cycle(){
+		return cycle;
+	}
+
+}

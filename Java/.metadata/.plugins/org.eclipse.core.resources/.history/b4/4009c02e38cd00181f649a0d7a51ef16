@@ -1,0 +1,53 @@
+package undirected_1;
+
+import edu.princeton.cs.algs4.*;
+import java.util.*;
+
+public class Graph {
+	
+	private final int numberOfVertices;		//number of vertices
+	private int numberOfEdges;				//number of edges
+	private Bag<Integer>[] adj;
+	
+	public Graph(int V) {
+		this.numberOfVertices = V;
+		this.numberOfEdges = 0;
+		adj = (Bag<Integer>[]) new Bag[V];
+		for (int v = 0; v < V; v++) {
+			adj[v] = new Bag<Integer>();
+		}
+	}
+	
+	public int numberOfVertices() {
+		return numberOfVertices;
+	}
+	
+	public int numberOfEdges() {
+		return numberOfEdges;
+	}
+	
+	public void addEdge(int v, int w) {
+		adj[v].add(w);
+		adj[w].add(v);
+		numberOfEdges++;
+	}
+	
+    public Iterable<Integer> adj(int v) {
+        return adj[v];
+    }
+
+    public int degree(int v) {
+    	return adj[v].size();
+    }
+
+	public String toString(SymbolGraph sg) {
+		String s = numberOfVertices + " vertices, " + numberOfEdges + " edges\n";
+		for (int v = 0; v < numberOfVertices; v++) {
+			s += sg.name(v) + ": ";
+			for(int w : this.adj(v))
+				s += sg.name(w) + " "; 
+			s += "\n";
+		}
+		return s;
+	}
+}

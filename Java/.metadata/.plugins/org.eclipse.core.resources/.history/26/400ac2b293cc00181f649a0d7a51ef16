@@ -1,0 +1,25 @@
+package directed_3;
+
+import edu.princeton.cs.algs4.DepthFirstOrder;
+
+public class Topological {
+	
+	private Iterable<Integer> order;
+	
+	public Topological(Digraph graph) {
+		DirectedCycle cyclefinder = new DirectedCycle(graph);
+		if(!cyclefinder.hasCycle()) {
+			DepthFirstOrder dfs = new DepthFirstOrder(graph);
+			order = dfs.reversePost();
+		}
+	}
+	
+	public Iterable<Integer> order(){
+		return order;
+	}
+	
+	public boolean isDAG() {
+		return order == null;
+	}
+
+}

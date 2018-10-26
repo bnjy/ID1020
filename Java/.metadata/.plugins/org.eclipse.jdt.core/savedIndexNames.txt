@@ -1,0 +1,7 @@
+INDEX VERSION 1.130+/Users/Roth/Documents/KTH/ID1020/Java/.metadata/.plugins/org.eclipse.jdt.core
+2033920574.index
+3141775227.index
+2048152730.index
+575340225.index
+1431162455.index
+3408485364.index

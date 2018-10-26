@@ -1,0 +1,13 @@
+package directed_2;
+
+public class DirectedCycle {
+	
+	private boolean[] marked;
+	private int[] id;
+	private int count;
+	
+	public DirectedCycle(Digraph graph) {
+		
+	}
+
+}

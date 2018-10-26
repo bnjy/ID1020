@@ -1,0 +1,11 @@
+package directed_1;
+
+public class DirectedDFS {
+	
+	private boolean[] marked;
+	
+	public DirectedDFS(Digraph graph, int s) {
+		marked = new new boolean[graph.V()];
+		
+    }
+}

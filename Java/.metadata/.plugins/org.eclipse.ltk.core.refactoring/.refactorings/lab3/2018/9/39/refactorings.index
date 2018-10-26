@@ -1,0 +1,44 @@
+1537906445228	Delete elements
+1537906453048	Rename package 'problem1'
+1537908749597	Rename type 'Problem2'
+1537959322842	Rename type 'ST'
+1537960457188	Rename local variable 'n'
+1537968376682	Rename local variable 'node'
+1537968399856	Rename local variable 'x'
+1537971960326	Infer generic type arguments
+1537972098195	Infer generic type arguments
+1537972558604	Rename local variable 'minlen'
+1537974091710	Rename field 'N'
+1537977482917	Rename type 'BinarySearchST'
+1537985598803	Rename type 'BinarySearchSTBR'
+1537989494154	Rename field 'val'
+1537989500604	Rename field 'N'
+1538036881317	Rename local variable 'cmp'
+1538054804069	Copy compilation units
+1538080245367	Rename local variable 'maxa'
+1538118264106	Copy compilation unit
+1538121612901	Rename local variable 'delete'
+1538133039728	Rename local variable 'estimatedTime'
+1538135618421	Rename type 'Quick'
+1538135817050	Rename type 'QuickSort'
+1538138116889	Rename type 'Quick'
+1538142978430	Delete element
+1538233805763	Rename package 'problem4'
+1538237810602	Copy compilation unit
+1538238112343	Rename type 'RedBlackBST'
+1538238380797	Copy compilation unit
+1538238874410	Delete element
+1538247997148	Rename type 'Hashich'
+1538256297293	Delete element
+1538256328599	Delete element
+1538256346715	Copy compilation units
+1538257671858	Rename local variable 'key'
+1538257780964	Copy compilation unit
+1538258025304	Rename local variable 'word'
+1538260332533	Rename local variable 'hashKey'
+1538260356212	Rename local variable 'maxHash'
+1538310797488	Delete element
+1538311284758	Rename local variable 'hash'
+1538315895656	Rename local variable 'eqHashes'
+1538317498705	Copy compilation units
+1538317569483	Rename local variable 'wordKey'

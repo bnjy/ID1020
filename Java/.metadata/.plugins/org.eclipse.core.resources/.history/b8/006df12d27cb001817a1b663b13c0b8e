@@ -1,0 +1,26 @@
+package undirected_2;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class Main {
+	
+    public static void main(String[] args) throws MalformedURLException {
+    	URL url = new URL("https://introcs.cs.princeton.edu/java/data/contiguous-usa.dat");
+    	String delimiter = " ";
+    	SymbolGraph sg = new SymbolGraph(url, delimiter);
+    	
+    	deapthFirst(sg);
+
+    }
+    
+    public static void deapthFirst(SymbolGraph sg) {
+    	Graph g = sg.G();
+    	int s = sg.index("AL");
+    	int des = sg.index("WI");
+    	
+    	BreadthFirstPaths dfs = new BreadthFirstPaths(g,s);
+    	
+    }
+
+}

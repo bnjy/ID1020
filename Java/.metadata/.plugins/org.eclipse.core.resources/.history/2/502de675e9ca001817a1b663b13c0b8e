@@ -1,0 +1,138 @@
+/***********************************************************
+ * ID1020 Lab 1 - Problem 2
+ * 
+ * This is the lab task 'Problem 2' of Lab 1 in course ID1020 at KTH.
+ * 
+ * A stack with LIFO logic. Each stack element is generic of type Item.
+ * 
+ * Test class main pushes five ints to the stack and then prints them.
+ * 
+ ***********************************************************/
+
+package undirected_1;
+
+import java.util.*;
+import edu.princeton.cs.algs4.*;
+
+/**
+ * Code for a LIFO queue (last-in-first-out), aka a stack. The stack is generic and can handle Items.
+ * Push and pop are used to manage the items in the stack. 
+ * 
+ * The code has been created influenced by the book example of a stack in Algorithms by Sedgewick
+ * & Wayne.
+ * @link https://algs4.cs.princeton.edu/13stacks/Stack.java.html
+ * 
+ * @author Benjamin Roth
+ *
+ * @param <Item> a generic type for implementing the stack.
+ */
+
+public class Stack<Item> implements Iterable<Item> {
+	private Node first;				//the first element of the stack
+	private int size;				//the stack size
+	
+	/**
+	 * Node class
+	 */
+	private class Node{
+		private Item item;
+		private Node next;
+	}
+	
+	/**
+	 * Class constructor.
+	 */
+	public Stack() {
+		first = null;
+		size = 0;
+	}
+	
+	/**
+	 * Method that checks if the stack is empty. Returns true if empty.
+	 * @return true if empty stack. false if not.
+	 */
+	public boolean isEmpty() {
+		return first == null;
+	}
+	
+	/**
+	 * returns an int with the number of the stack size.
+	 * @return number of the stack size. (The number of elements in the stack)
+	 */
+	public int size() {
+		return size;
+	}
+	
+	/**
+	 * Adds item to the stack, rearrange the nodes, and increases the size variable.
+	 * @param item the item that is added to the stack.
+	 */
+	public void push(Item item) {
+		Node oldfirst;
+		oldfirst = first;
+		first = new Node();
+		first.item = item;
+		first.next = oldfirst;
+		size++;
+	}
+	
+	/**
+	 * Returns the last added item from the stack, and also removes it from the stack.
+	 * @return the most recently added item to the stack.
+	 * @throws NoSuchElementException if there are no items in the stack.
+	 */
+	public Item pop() {
+		if (isEmpty()) throw new NoSuchElementException("Stack is empty.");
+		Item returnItem = first.item;
+		first = first.next;
+		size--;
+		return returnItem;
+	}
+	/**
+	 * A method that iterates through the stack and represents the items
+	 * between brackets and separated by comma.
+	 */
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(Item item : this) {
+			sb.append(",[" + item + "]");
+		}
+		return sb.toString();
+	}
+	
+	/**
+	 * A iterator that iterates through the stack.
+	 */
+	public Iterator<Item> iterator() {
+		return new ListIterator(); }
+	
+	private class ListIterator implements Iterator<Item>
+	{
+		private Node current = first;
+		
+		public boolean hasNext() {
+			return current != null;
+		}
+		
+		public Item next() {
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
+	}
+	
+	/**
+	 * Main class that test the stack implementation of a Integer stack.
+	 */
+	public static void main(String[] args) {
+		Stack<Integer> stackTest = new StackLifo<Integer>();
+			
+		stackTest.push(1);
+		stackTest.push(2);
+		stackTest.push(3);
+		stackTest.push(4);
+		stackTest.push(5);
+		
+		System.out.println(stackTest.toString());
+	}
+}

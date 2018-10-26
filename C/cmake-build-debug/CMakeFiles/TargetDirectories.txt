@@ -1,0 +1,3 @@
+/Users/Roth/Documents/KTH/ID1020/C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Roth/Documents/KTH/ID1020/C/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Roth/Documents/KTH/ID1020/C/cmake-build-debug/CMakeFiles/C.dir

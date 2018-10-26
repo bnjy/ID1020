@@ -1,0 +1,5 @@
+package undirected_1;
+
+public class Bag<Item> implements Iterable <Item> {
+
+}

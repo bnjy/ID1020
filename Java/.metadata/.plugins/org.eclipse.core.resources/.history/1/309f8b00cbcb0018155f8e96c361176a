@@ -1,0 +1,8 @@
+package undirected_3;
+
+public class Edge implements Comparable<Edge> {
+	private final int v;
+	private final int w;
+	private final double weight;
+
+}
